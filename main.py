@@ -1,17 +1,14 @@
 from dados import carregar_dados, calcular_volume_total
-from graficos import grafico_barras_total
+from graficos import grafico_barras_agrupado_por_exercicio
 
 def main():
     caminho = 'treino.csv'
-
-    # Carrega e processa os dados
     df = carregar_dados(caminho)
     df = calcular_volume_total(df)
 
-    # Mostra apenas o gráfico de barras
-    grafico_barras_total(df)
+    grafico_barras_agrupado_por_exercicio(df)
 
-    print("Gráfico de barras exibido com sucesso.")
+    print("Gráfico agrupado por exercício e data exibido.")
 
 if __name__ == "__main__":
     main()
