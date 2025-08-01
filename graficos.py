@@ -22,7 +22,7 @@ def grafico_linha_volume(df_agrupado):
     plt.show() #Exibe o gráfico
 
     
-    def grafico_barras_total(df):
+def grafico_barras_total(df):
         #Plota um gráfico de barras com o volume total
         #Agrupa dados por data e soma o volume total
         volume_diario = df.groupby('data')['volume'].sum().reset_indnex()
@@ -38,7 +38,7 @@ def grafico_linha_volume(df_agrupado):
         plt.show
 
 
-    def grafico_pizzas_exerciocios(df):
+ def grafico_pizzas_exerciocios(df):
         #Plota gráfico de pizza
         #Agrupa um gráfico de pizza e mostra a proporção de volume por exercício
         volume_por_exercicio = df.groupby('exercicio')['volume'].sum()
@@ -46,4 +46,3 @@ def grafico_linha_volume(df_agrupado):
         plt.pie(volume_por_exercicio, labels= volume_por_exercicio.index, autopct= '%1.1f%%', startangle= 140) 
         plt.axis('equal')
         plt.show
-              
