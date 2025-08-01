@@ -9,8 +9,19 @@ def carregar_dados(caminho_arquivo):
 
 
 def calcular_volume_total(df):
-    #Cria nova coluna "Volume" = carga * reps * séries e adiciona ao DataFrame.
-    df['volume'] = df['carga'] * df['reps'] * df['series']
+    #Calcula volumet total de acordo com a carga conforme tipo_carga:
+    # - 'Halter' multiplica por 2
+    # - 'anilha' e 'placa' mantêm carga normal
+    def ajustar_carga(row):
+        if row['tipo_carga'] == 'halter':
+            return row['carga'] * 2
+        elif row['tipo_carga'] in ['anilha', 'placa']:
+            return row['carga']
+        else:
+            return row['carga']
+        
+    df['carga_ajustada'] = df.apply(ajustar_carga, axis= 1)
+    df['volume'] = df['carga_ajustada'] * df['reps'] * df['series']
     return df
 
 
